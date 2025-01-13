@@ -1,15 +1,16 @@
 class Solution {
     public int minimumLength(String s) {
-        int ar[] = new int[26];
+        HashMap<Character,Integer> map = new HashMap<>();
         for(char c : s.toCharArray())
-            ar[c-'a']++;
+            map.put(c,map.getOrDefault(c,0)+1);
         int ans=0;
-        for(int i=0;i<26;i++){
-            if(ar[i]<3)
-                ans+=ar[i];
-            else if(ar[i]%2==0)
+        for(Map.Entry<Character,Integer> e : map.entrySet()){
+            int a = e.getValue();
+            if(a<3)
+                ans+=a;
+            else if(a%2==0)
                 ans+=2;
-            else if(ar[i]%2!=0)
+            else if(a%2!=0)
                 ans++;
         }
         return ans;
