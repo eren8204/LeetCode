@@ -12,19 +12,18 @@ class Solution {
                 positions[mat[i][j]][1] = j;
             }
         }
+        
         int[] rows = new int[r];
-        Arrays.fill(rows, c);
         int[] cols = new int[c];
-        Arrays.fill(cols, r);
 
         for (int i = 0; i < arr.length; i++) {
             int value = arr[i];
             int ro = positions[value][0];
             int co = positions[value][1];
 
-            rows[ro]--;
-            cols[co]--;
-            if (rows[ro] == 0 || cols[co] == 0) {
+            rows[ro]++;
+            cols[co]++;
+            if (rows[ro] == c || cols[co] == r) {
                 return i;
             }
         }
